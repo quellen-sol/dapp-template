@@ -12,16 +12,16 @@ const App = () => {
 
   const wallets = useMemo(() => [], []);
   return (
-    <ConfigProvider theme={{
-      algorithm: theme.darkAlgorithm,
-      token: {},
-    }}>
+    <ConfigProvider
+      theme={{
+        algorithm: theme.darkAlgorithm,
+        token: {},
+      }}
+    >
       <ConnectionProvider endpoint={endpoint}>
         <WalletProvider wallets={wallets} autoConnect>
           <WalletModalProvider>
-              <QueryClientProvider client={client}>
-                {/* Stuff */}
-              </QueryClientProvider>
+            <QueryClientProvider client={client}>{/* Stuff */}</QueryClientProvider>
           </WalletModalProvider>
         </WalletProvider>
       </ConnectionProvider>

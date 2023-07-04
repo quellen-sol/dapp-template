@@ -3,16 +3,24 @@ import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
 import { ConfirmOptions } from "@solana/web3.js";
 import { useMemo } from "react";
 
-export const useAnchorProgram = <T extends Idl = Idl>(idl: T, programId: Address, confirmOptions?: ConfirmOptions): Program<T> | null => {
+export const useAnchorProgram = <T extends Idl = Idl>(
+  idl: T,
+  programId: Address,
+  confirmOptions?: ConfirmOptions,
+): Program<T> | null => {
   const { connection } = useConnection();
   const wallet = useAnchorWallet();
   const provider = useMemo(() => {
     if (!wallet) {
       return null;
     }
-    return new AnchorProvider(connection, wallet, confirmOptions ?? {
-      commitment: "confirmed",
-    });
+    return new AnchorProvider(
+      connection,
+      wallet,
+      confirmOptions ?? {
+        commitment: "confirmed",
+      },
+    );
   }, [connection, wallet, confirmOptions]);
 
   const program = useMemo(() => {
