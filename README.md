@@ -14,5 +14,4 @@ Lightweight builds and testing with Vite
 - Vite
 - bn.js
 - React Query v4
-- React Router v6
 - Zustand
